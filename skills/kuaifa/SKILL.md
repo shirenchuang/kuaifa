@@ -102,6 +102,69 @@ After setup, confirm everything looks good:
 kuaifa config list
 ```
 
+## Common Workflows
+
+### Workflow 1: Generate Article with AI + Publish with Template
+
+When a user wants to generate content with AI and publish using a specific template:
+
+1. **Get template style guide:**
+   ```bash
+   kuaifa template prompt kuaifa
+   ```
+
+2. **Use the returned prompt to write the article:**
+   - Follow the template's formatting guidelines
+   - Match the template's tone and structure
+   - Apply any specific styling requirements
+
+3. **Publish with the template:**
+   ```bash
+   kuaifa publish article.md --title "文章标题" --cover cover.jpg --template kuaifa
+   ```
+
+**Example conversation:**
+```
+User: "写一篇关于 AI 的文章并发布到微信，用 kuaifa 模板"
+Claude: [Runs kuaifa template prompt kuaifa to get style guide]
+Claude: [Writes article following the template's guidelines]
+Claude: [Runs kuaifa publish with --template kuaifa]
+```
+
+### Workflow 2: Publish Existing Article
+
+When a user has a finished article and just wants to publish:
+
+```bash
+kuaifa publish article.md --title "文章标题" --cover cover.jpg
+```
+
+**No need to fetch template prompt** — the article is already complete.
+
+### Workflow 3: Help User Format Article for Template
+
+When a user is writing and asks for template-specific formatting help:
+
+1. **Ask if they want style guidance:**
+   "Would you like me to get the style guidelines for the [template-name] template to help format your article?"
+
+2. **If yes, fetch the prompt:**
+   ```bash
+   kuaifa template prompt <template-id>
+   ```
+
+3. **Review their content and suggest adjustments:**
+   - Heading structure
+   - Paragraph formatting
+   - Code block styling
+   - Image placement
+   - Any template-specific conventions
+
+4. **Publish when ready:**
+   ```bash
+   kuaifa publish article.md --title "标题" --cover cover.jpg --template <template-id>
+   ```
+
 ## Core Commands
 
 ### Publish an Article — `kuaifa publish <file>`
@@ -173,6 +236,8 @@ Supported formats: PNG, JPEG, GIF, WebP, BMP, SVG. Max 10MB per file.
 
 ### Template Management
 
+#### List Templates
+
 List all available templates and user presets:
 
 ```bash
@@ -184,6 +249,39 @@ This shows two sections:
 - **User presets** — custom presets saved on the server, referenced by name or slug
 
 Use the ID, name, or slug with `--template` when publishing. If a user is unsure which template to use, run `kuaifa template list` first to show their options.
+
+#### Get Template Writing Prompt
+
+Get the writing prompt/style guide for a specific template:
+
+```bash
+kuaifa template prompt <template-id>
+```
+
+**Examples:**
+```bash
+kuaifa template prompt kuaifa    # Get prompt for "kuaifa" template
+kuaifa template prompt mint      # Get prompt for "mint" template
+```
+
+**When to use this:**
+
+1. **User is generating NEW content with AI** and wants to use a specific template:
+   - First, get the template's prompt: `kuaifa template prompt <template-id>`
+   - Use the returned prompt to guide your article writing
+   - Write the article following the template's style guidelines
+   - Then publish with `--template <template-id>`
+
+2. **User has an EXISTING article**:
+   - Skip this step, just publish directly with `--template <template-id>`
+
+3. **User is writing + wants to publish with a specific template**:
+   - Ask if they want style guidance
+   - If yes, fetch and show the template prompt first
+   - Help them write/adjust content following the guidelines
+   - Then publish with the template
+
+**Important:** The template prompt is for content creation/formatting guidance ONLY. Do not use it if the article is already finalized.
 
 ## Configuration
 

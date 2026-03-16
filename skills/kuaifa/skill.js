@@ -10,7 +10,7 @@
 export default {
   // Skill metadata
   name: "kuaifa",
-  version: "1.0.0",
+  version: "1.1.0",
   description: "Kuaifa (快发) — publish Markdown articles to WeChat Official Accounts via the kuaifa CLI. Use this skill whenever the user wants to publish an article to WeChat, upload images, manage kuaifa configuration or templates, or mentions '快发', 'kuaifa', 'publish to WeChat', '发布公众号', '微信发布', '发文章'. Also trigger when the user has a Markdown file and wants to distribute it to WeChat, or asks about WeChat article formatting and themes.",
 
   // Trigger keywords - when to activate this skill
@@ -119,6 +119,7 @@ export default {
       publish: "kuaifa publish <file> --title <title> --cover <image>",
       upload: "kuaifa upload <path...>",
       templateList: "kuaifa template list",
+      templatePrompt: "kuaifa template prompt <template-id>",
       configList: "kuaifa config list",
       configSet: "kuaifa config set <key> <value>",
       verifyWechat: "kuaifa config verify-wechat",
