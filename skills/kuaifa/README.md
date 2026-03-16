@@ -1,88 +1,90 @@
-# Kuaifa Skill
+# Kuaifa Skill - 快发技能
 
-This skill enables Claude Code to help users publish Markdown articles to WeChat Official Accounts using the [kuaifa CLI](https://www.kuaifa.art).
+[English](./README.en.md) | 简体中文
 
-## What Claude Can Do With This Skill
+这个技能让 Claude Code 能够帮助用户使用 [kuaifa CLI](https://www.kuaifa.art) 将 Markdown 文章发布到微信公众号。
 
-- Guide first-time setup (API keys, WeChat credentials, default preferences)
-- Publish Markdown articles to WeChat as drafts or immediate posts
-- Upload images and get CDN URLs
-- Render Markdown previews with different themes
-- Manage templates and presets
-- Configure multi-account profiles
-- Troubleshoot common errors
+## Claude 可以做什么
 
-## Trigger Keywords
+- 引导首次设置（API 密钥、微信凭证、默认配置）
+- 将 Markdown 文章发布到微信（草稿或立即发布）
+- 上传图片并获取 CDN URL
+- 使用不同主题渲染 Markdown 预览
+- 管理模板和预设配置
+- 配置多账号 profile
+- 排查常见错误
 
-This skill activates when users mention:
+## 触发关键词
 
-- `kuaifa`, `快发`
-- "publish to WeChat", "WeChat Official Account"
-- "微信公众号", "发布公众号", "微信发布", "发文章"
-- "wechat article", "公众号文章"
+当用户提到以下内容时，此技能会自动激活：
 
-## Files
+- `kuaifa`、`快发`
+- "publish to WeChat"、"WeChat Official Account"
+- "微信公众号"、"发布公众号"、"微信发布"、"发文章"
+- "wechat article"、"公众号文章"
 
-- **SKILL.md** — Main skill prompt that Claude reads. Contains all commands, workflows, and troubleshooting guidance.
-- **skill.js** — Skill metadata and utility functions.
-- **evals/** — Evaluation tests for measuring skill quality.
+## 文件说明
 
-## Usage Examples
+- **SKILL.md** — Claude 读取的主要技能提示词，包含所有命令、工作流程和问题排查指南
+- **skill.js** — 技能元数据和工具函数
+- **evals/** — 用于衡量技能质量的评估测试
 
-### First-Time Setup
+## 使用示例
 
-```
-User: "Help me set up kuaifa"
-Claude: [Guides through API key registration, credential setup, template selection]
-```
-
-### Publishing an Article
+### 首次设置
 
 ```
-User: "Publish my article.md to WeChat with title 'AI Weekly' and cover image cover.jpg"
-Claude: [Runs kuaifa publish with correct parameters, reports result]
+用户："帮我设置 kuaifa"
+Claude：[引导完成 API 密钥注册、凭证配置、模板选择]
 ```
 
-### Template Discovery
+### 发布文章
 
 ```
-User: "What templates are available?"
-Claude: [Runs kuaifa template list, shows options]
+用户："把 article.md 发布到微信，标题是《AI 周报》，封面用 cover.jpg"
+Claude：[使用正确的参数运行 kuaifa publish，报告结果]
 ```
 
-### Multi-Account Management
+### 发现模板
 
 ```
-User: "I want to manage two WeChat accounts"
-Claude: [Explains profile system, helps configure second account]
+用户："有哪些可用的模板？"
+Claude：[运行 kuaifa template list，显示选项]
 ```
 
-## Evaluation
+### 多账号管理
 
-Run evals to measure skill performance:
+```
+用户："我想管理两个微信账号"
+Claude：[解释 profile 系统，帮助配置第二个账号]
+```
+
+## 评估测试
+
+运行评估以衡量技能性能：
 
 ```bash
 claude-code-cli eval run
 ```
 
-Current eval scenarios:
+当前的评估场景：
 
-1. **eval-1-onboarding** — First-time setup experience
-2. **eval-2-templates** — Template discovery and selection
-3. **eval-3-publish** — End-to-end publishing workflow
-4. **eval-4-multi-account** — Multi-account profile management
+1. **eval-1-onboarding** — 首次设置体验
+2. **eval-2-templates** — 模板发现和选择
+3. **eval-3-publish** — 端到端发布流程
+4. **eval-4-multi-account** — 多账号 profile 管理
 
-## Maintenance
+## 维护指南
 
-When updating this skill:
+更新此技能时：
 
-1. Edit **SKILL.md** with new commands or workflows
-2. Update **skill.js** metadata if triggers/structure changes
-3. Add new evals for significant new features
-4. Run evals to verify quality hasn't regressed
-5. Update version number in skill.js
+1. 编辑 **SKILL.md** 添加新命令或工作流程
+2. 如果触发关键词或结构变化，更新 **skill.js** 元数据
+3. 为重要的新功能添加新的评估测试
+4. 运行评估以验证质量没有退化
+5. 更新 skill.js 中的版本号
 
-## Resources
+## 相关资源
 
-- [Kuaifa Official Site](https://www.kuaifa.art)
-- [Claude Code Skill Documentation](https://github.com/anthropics/claude-code)
+- [快发官方网站](https://www.kuaifa.art)
+- [Claude Code Skill 文档](https://github.com/anthropics/claude-code)

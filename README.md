@@ -1,160 +1,166 @@
-# Kuaifa Skill for Claude Code
+# Kuaifa Skill - 快发技能
 
-A Claude Code skill that enables seamless publishing of Markdown articles to WeChat Official Accounts using the [kuaifa CLI](https://www.kuaifa.art).
+[English](./README.en.md) | 简体中文
 
-## What is Kuaifa?
+这是一个为 Claude Code 开发的技能（Skill），让 Claude 能够帮助用户使用 [kuaifa CLI](https://www.kuaifa.art) 工具将 Markdown 文章发布到微信公众号。
 
-Kuaifa (快发) is a CLI tool that simplifies publishing Markdown content to WeChat Official Accounts. It handles:
+## ✨ 功能特性
 
-- Automatic image uploading and CDN hosting
-- Theme-based HTML rendering
-- Draft creation in WeChat backend
-- Multi-account management
-- Image caching and compression
+Claude 可以帮助你：
 
-With this skill, Claude can help you publish articles, manage templates, configure accounts, and troubleshoot issues — all through natural conversation.
+- 🚀 **发布文章** - 将 Markdown 文件发布到微信公众号（草稿或立即发布）
+- 🖼️ **上传图片** - 上传图片到微信素材库并获取 CDN URL
+- 🎨 **渲染预览** - 使用不同主题渲染 Markdown 预览效果
+- 📝 **管理模板** - 浏览和选择文章渲染模板
+- ⚙️ **配置管理** - 设置 API 密钥、微信凭证、默认偏好设置
+- 👥 **多账号管理** - 支持配置和切换多个微信公众号
+- 🔧 **问题排查** - 诊断和解决常见错误
 
-## Installation
+## 📦 安装
 
-### Prerequisites
+### 前提条件
 
-- Node.js >= 18
-- Claude Code CLI
-- A kuaifa account (register at https://www.kuaifa.art)
+1. **安装 Claude Code CLI**（如果还没有安装）：
+   ```bash
+   npm install -g @anthropic-ai/claude-code-cli
+   ```
 
-### Install the kuaifa CLI
+2. **安装 kuaifa CLI 工具**：
+   ```bash
+   npm install -g kuaifa
+   ```
 
-```bash
-npm install -g kuaifa
-```
+### 安装本技能
 
-### Install this skill
-
-Clone this repository to your Claude Code skills directory:
-
+**方法 1：从 GitHub 克隆**
 ```bash
 cd ~/.claude/skills/
 git clone https://github.com/shirenchuang/kuaifa.git
 ```
 
-Or symlink your local development copy:
+**方法 2：手动下载**
+1. 下载此仓库
+2. 将 `skills/kuaifa` 目录复制到 `~/.claude/skills/kuaifa`
 
+**验证安装**
 ```bash
-ln -s /path/to/kuaifa ~/.claude/skills/kuaifa
+ls ~/.claude/skills/kuaifa
+# 应该看到: README.md  SKILL.md  skill.js  evals/
 ```
 
-## Quick Start
+## 🚀 快速开始
 
-### First-Time Setup
+安装后，Claude 会在你提到以下关键词时自动激活此技能：
 
-Ask Claude to help you set up kuaifa:
+- `kuaifa`、`快发`
+- "发布到微信"、"微信公众号"
+- "publish to WeChat"、"WeChat Official Account"
 
+### 示例对话
+
+**首次设置**
 ```
-Claude, help me set up kuaifa for my WeChat Official Account
-```
-
-Claude will guide you through:
-
-1. Getting your API key from https://www.kuaifa.art
-2. Configuring WeChat credentials (appid/appsecret)
-3. Setting default author and template preferences
-4. Verifying the setup
-
-### Publishing an Article
-
-Once configured, publishing is simple:
-
-```
-Claude, publish my article.md to WeChat with title "My Article" and cover image cover.jpg
+你：帮我设置 kuaifa
+Claude：[引导你完成 API 密钥注册、凭证配置、模板选择]
 ```
 
-Claude will:
-
-- Upload images referenced in your Markdown
-- Apply your chosen theme
-- Create a draft in your WeChat backend
-- Provide you with the media ID for review
-
-### Other Capabilities
-
-- **Template management**: "Show me available kuaifa templates"
-- **Image uploads**: "Upload these images to kuaifa"
-- **Preview rendering**: "Render this Markdown with the doocs-classic theme"
-- **Multi-account**: "Publish this to my second account"
-- **Troubleshooting**: "Why is my kuaifa publish failing?"
-
-## What This Skill Does
-
-This skill teaches Claude how to:
-
-1. **Detect kuaifa requests** — trigger on keywords like "publish to WeChat", "kuaifa", "快发", etc.
-2. **Guide first-time setup** — walk users through getting API keys, setting credentials, choosing templates
-3. **Execute publish workflows** — handle all parameters, defaults, and edge cases correctly
-4. **Manage configuration** — profiles, templates, remote settings
-5. **Troubleshoot issues** — diagnose common errors and suggest fixes
-
-## Development
-
-### Running Evals
-
-This skill includes evaluation tests to measure performance:
-
-```bash
-cd skills/kuaifa
-claude-code-cli eval run
+**发布文章**
+```
+你：把 article.md 发布到微信，标题是《AI 周报》，封面用 cover.jpg
+Claude：[运行 kuaifa publish 命令，报告结果]
 ```
 
-Evals cover:
+**浏览模板**
+```
+你：有哪些可用的模板？
+Claude：[运行 kuaifa template list，显示选项]
+```
 
-- First-time onboarding experience
-- Template discovery and selection
-- End-to-end publishing workflow
-- Multi-account management
+**多账号管理**
+```
+你：我想管理两个微信账号
+Claude：[解释 profile 系统，帮助配置第二个账号]
+```
 
-### Skill Structure
+## 📁 项目结构
 
 ```
 kuaifa/
-├── README.md           # This file
-├── skill.js            # Skill entry point and metadata
+├── README.md              # 项目说明文档（中文）
+├── README.en.md           # 项目说明文档（英文）
+├── LICENSE                # MIT 开源协议
 ├── skills/
 │   └── kuaifa/
-│       ├── SKILL.md    # Main skill prompt (Claude reads this)
-│       └── evals/      # Evaluation tests
-│           └── evals.json
-└── kuaifa-workspace/   # Eval results and benchmarks
+│       ├── README.md      # Skill 说明文档（中文）
+│       ├── README.en.md   # Skill 说明文档（英文）
+│       ├── SKILL.md       # Skill 提示词（给 Claude 看的）
+│       ├── skill.js       # Skill 入口和元数据
+│       └── evals/         # 评估测试用例
+│           ├── eval-1-onboarding/     # 首次设置流程
+│           ├── eval-2-templates/      # 模板发现和选择
+│           ├── eval-3-publish/        # 端到端发布流程
+│           └── eval-4-multi-account/  # 多账号管理
+└── kuaifa-workspace/      # 评估测试结果（不提交到 Git）
 ```
 
-## Contributing
+## 🧪 开发与测试
 
-Contributions are welcome! To improve this skill:
+### 运行评估测试
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/improvement`)
-3. Make your changes
-4. Run evals to verify quality (`claude-code-cli eval run`)
-5. Commit with descriptive messages
-6. Push and create a pull request
+评估测试（evals）用于衡量技能的质量和性能：
 
-### Improvement Ideas
+```bash
+# 进入 skill 目录
+cd skills/kuaifa
 
-- Add more eval scenarios (error handling, edge cases)
-- Support for batch publishing
-- Integration with content management workflows
-- Enhanced template customization guidance
+# 运行所有评估测试
+claude-code-cli eval run
 
-## License
+# 运行特定评估
+claude-code-cli eval run --eval eval-1-onboarding
+```
 
-MIT License
+### 当前的评估场景
 
-## Resources
+1. **eval-1-onboarding** - 首次设置体验
+2. **eval-2-templates** - 模板发现和选择
+3. **eval-3-publish** - 端到端发布流程
+4. **eval-4-multi-account** - 多账号配置管理
 
-- [Kuaifa Official Site](https://www.kuaifa.art)
-- [Claude Code Documentation](https://github.com/anthropics/claude-code)
-- [WeChat Official Account Platform](https://mp.weixin.qq.com)
+### 修改技能
 
-## Support
+更新此技能时：
 
-- For kuaifa CLI issues: https://www.kuaifa.art
-- For skill issues: Open an issue in this repository
-- For Claude Code questions: https://github.com/anthropics/claude-code/issues
+1. 编辑 **SKILL.md** 添加新命令或工作流程
+2. 更新 **skill.js** 元数据（如果触发关键词或结构变化）
+3. 为重要的新功能添加新的评估测试
+4. 运行评估以验证质量没有退化
+5. 更新 skill.js 中的版本号
+
+## 🤝 贡献
+
+欢迎贡献！以下是一些方式：
+
+- 报告 Bug 或建议功能
+- 改进文档
+- 添加新的评估测试用例
+- 优化提示词（SKILL.md）
+
+## 📄 许可证
+
+本项目采用 [MIT 许可证](./LICENSE)。
+
+## 🔗 相关链接
+
+- [快发官方网站](https://www.kuaifa.art)
+- [Claude Code 文档](https://github.com/anthropics/claude-code)
+- [问题反馈](https://github.com/shirenchuang/kuaifa/issues)
+
+## 👤 作者
+
+**shirenchuang**
+- GitHub: [@shirenchuang](https://github.com/shirenchuang)
+
+---
+
+如果这个技能对你有帮助，欢迎 ⭐️ Star 支持！
