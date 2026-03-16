@@ -45,7 +45,15 @@ Claude 可以帮助你：
 
 ### 安装本技能
 
-**方法 1（最简单）：让 AI 帮你安装**
+**方法 1（推荐）：一键安装**
+
+```bash
+npx skills add shirenchuang/kuaifa --skill kuaifa
+```
+
+支持 Claude Code、Cursor、Copilot、Goose 等主流 AI 编程助手，自动安装到正确位置。
+
+**方法 2：让 AI 帮你安装**
 
 把下面这段话直接发给你的 Claude Code / 小龙虾 / 其他 AI 编程助手：
 
@@ -53,7 +61,7 @@ Claude 可以帮助你：
 
 AI 会自动帮你克隆仓库并放到正确的位置。
 
-**方法 2：手动克隆**
+**方法 3：手动克隆**
 ```bash
 cd ~/.claude/skills/
 git clone https://github.com/shirenchuang/kuaifa.git

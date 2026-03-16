@@ -39,7 +39,15 @@ With this skill, Claude can help you publish articles, manage templates, configu
 
 ### Install this skill
 
-**Option 1 (Easiest): Let your AI install it**
+**Option 1 (Recommended): One-line install**
+
+```bash
+npx skills add shirenchuang/kuaifa --skill kuaifa
+```
+
+Works with Claude Code, Cursor, Copilot, Goose, and other AI coding assistants — automatically installs to the correct location.
+
+**Option 2: Let your AI install it**
 
 Just send the following message to your Claude Code or other AI assistant:
 
@@ -47,7 +55,7 @@ Just send the following message to your Claude Code or other AI assistant:
 
 The AI will clone the repo and place it in the correct directory automatically.
 
-**Option 2: Manual clone**
+**Option 3: Manual clone**
 
 ```bash
 cd ~/.claude/skills/
