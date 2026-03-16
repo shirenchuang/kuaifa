@@ -1,8 +1,24 @@
-# Kuaifa Skill - 快发技能
+<p align="center">
+  <a href="https://www.kuaifa.art">
+    <img src="./assets/banner.png" alt="快发 - 好内容别留着，快发。" width="100%" />
+  </a>
+</p>
 
-[English](./README.en.md) | 简体中文
+<h1 align="center">Kuaifa Skill - 快发技能</h1>
 
-这是一个为 Claude Code 开发的技能（Skill），让 Claude 能够帮助用户使用 [kuaifa CLI](https://www.kuaifa.art) 工具将 Markdown 文章发布到微信公众号。
+<p align="center">
+  <a href="https://www.npmjs.com/package/kuaifa"><img src="https://img.shields.io/npm/v/kuaifa?color=cb3837&label=kuaifa%20CLI" alt="npm version" /></a>
+  <a href="https://github.com/shirenchuang/kuaifa/blob/main/LICENSE"><img src="https://img.shields.io/github/license/shirenchuang/kuaifa" alt="license" /></a>
+  <a href="https://github.com/shirenchuang/kuaifa/stargazers"><img src="https://img.shields.io/github/stars/shirenchuang/kuaifa?style=social" alt="stars" /></a>
+</p>
+
+<p align="center">
+  <a href="./README.en.md">English</a> | 简体中文
+</p>
+
+<p align="center">
+  为 Claude Code 开发的技能（Skill），让 AI 帮你用 <a href="https://www.kuaifa.art">kuaifa CLI</a> 一键将 Markdown 文章发布到微信公众号。
+</p>
 
 ## ✨ 功能特性
 

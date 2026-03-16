@@ -1,6 +1,20 @@
-# Kuaifa Skill for Claude Code
+<p align="center">
+  <a href="https://www.kuaifa.art">
+    <img src="./assets/banner.png" alt="Kuaifa — Write it, ship it." width="100%" />
+  </a>
+</p>
 
-A Claude Code skill that enables seamless publishing of Markdown articles to WeChat Official Accounts using the [kuaifa CLI](https://www.kuaifa.art).
+<h1 align="center">Kuaifa Skill for Claude Code</h1>
+
+<p align="center">
+  <a href="https://www.npmjs.com/package/kuaifa"><img src="https://img.shields.io/npm/v/kuaifa?color=cb3837&label=kuaifa%20CLI" alt="npm version" /></a>
+  <a href="https://github.com/shirenchuang/kuaifa/blob/main/LICENSE"><img src="https://img.shields.io/github/license/shirenchuang/kuaifa" alt="license" /></a>
+  <a href="https://github.com/shirenchuang/kuaifa/stargazers"><img src="https://img.shields.io/github/stars/shirenchuang/kuaifa?style=social" alt="stars" /></a>
+</p>
+
+<p align="center">
+  A Claude Code skill that enables seamless publishing of Markdown articles to WeChat Official Accounts using the <a href="https://www.kuaifa.art">kuaifa CLI</a>.
+</p>
 
 ## What is Kuaifa?
 
