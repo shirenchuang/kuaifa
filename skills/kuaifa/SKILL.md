@@ -35,6 +35,48 @@ npm update -g kuaifa
 cd ~/.claude/skills/kuaifa && git pull origin main
 ```
 
+## CRITICAL RULE: Always Fetch Template Prompt Before Writing New Content
+
+**This is the #1 rule for content generation. DO NOT skip this step.**
+
+When the user asks you to **WRITE, GENERATE, or CREATE** a new article:
+
+### Step 1 — Determine which template to use
+
+- If user **specifies a template**: use that template ID/name
+- If user **does NOT specify a template**: check for configured default template:
+  ```bash
+  kuaifa config get default-template
+  ```
+  - If a default template exists → use that template
+  - If no default template → skip prompt fetch, write freely
+
+### Step 2 — Fetch the template's writing prompt (MANDATORY)
+
+```bash
+kuaifa template prompt <template-id>
+```
+
+Read the output carefully. It contains:
+- Required content structure and formatting
+- Tone and style conventions
+- Special HTML comments or markup rules
+- Best practices specific to this template
+
+### Step 3 — Write the article FOLLOWING the prompt guidelines
+
+Apply ALL requirements from the template prompt. Do not improvise structure or formatting — follow what the prompt says.
+
+### Step 4 — Publish with the same template
+
+```bash
+kuaifa publish article.md --title "..." --cover ... --template <template-id>
+```
+
+**When does this rule NOT apply?**
+- User has an **existing/finished** article → just publish directly, no prompt needed
+- User explicitly says to write **without any template style** → write freely
+
 ## First-Time Setup Guide
 
 Before any operation, check if kuaifa is installed:
@@ -105,6 +147,8 @@ kuaifa config list
 ## Common Workflows
 
 ### Workflow 1: Generate NEW Article + Publish with Template
+
+> **See "CRITICAL RULE" above** — you MUST fetch the template prompt before writing.
 
 When user asks you to **WRITE/GENERATE** content and publish with a specific template:
 
