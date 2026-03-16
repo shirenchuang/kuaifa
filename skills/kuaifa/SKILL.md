@@ -104,66 +104,59 @@ kuaifa config list
 
 ## Common Workflows
 
-### Workflow 1: Generate Article with AI + Publish with Template
+### Workflow 1: Generate NEW Article + Publish with Template
 
-When a user wants to generate content with AI and publish using a specific template:
+When user asks you to **WRITE/GENERATE** content and publish with a specific template:
 
-1. **Get template style guide:**
+1. **Fetch template prompt:**
    ```bash
    kuaifa template prompt kuaifa
    ```
 
-2. **Use the returned prompt to write the article:**
-   - Follow the template's formatting guidelines
-   - Match the template's tone and structure
-   - Apply any specific styling requirements
+2. **Write article following the guidelines:**
+   - Follow all formatting requirements
+   - Match the template's structure
+   - Apply special conventions
 
 3. **Publish with the template:**
    ```bash
    kuaifa publish article.md --title "文章标题" --cover cover.jpg --template kuaifa
    ```
 
-**Example conversation:**
+**Example:**
 ```
 User: "写一篇关于 AI 的文章并发布到微信，用 kuaifa 模板"
-Claude: [Runs kuaifa template prompt kuaifa to get style guide]
-Claude: [Writes article following the template's guidelines]
+Claude: [Runs kuaifa template prompt kuaifa to get guidelines]
+Claude: [Writes article following the guidelines]
 Claude: [Runs kuaifa publish with --template kuaifa]
 ```
 
-### Workflow 2: Publish Existing Article
+### Workflow 2: Publish EXISTING Article with Template
 
-When a user has a finished article and just wants to publish:
+When user has an **existing article file** and wants to publish:
+
+```bash
+kuaifa publish article.md --title "文章标题" --cover cover.jpg --template mint
+```
+
+**DO NOT fetch template prompt** — the article is already written. Just publish directly.
+
+**Example:**
+```
+User: "把这个 article.md 发布到微信，用 mint 模板"
+Claude: [Directly runs kuaifa publish with --template mint]
+Claude: [NO need to fetch template prompt - article already exists]
+```
+
+### Workflow 3: Publish WITHOUT Specific Template
+
+When no template is specified:
 
 ```bash
 kuaifa publish article.md --title "文章标题" --cover cover.jpg
 ```
 
-**No need to fetch template prompt** — the article is already complete.
-
-### Workflow 3: Help User Format Article for Template
-
-When a user is writing and asks for template-specific formatting help:
-
-1. **Ask if they want style guidance:**
-   "Would you like me to get the style guidelines for the [template-name] template to help format your article?"
-
-2. **If yes, fetch the prompt:**
-   ```bash
-   kuaifa template prompt <template-id>
-   ```
-
-3. **Review their content and suggest adjustments:**
-   - Heading structure
-   - Paragraph formatting
-   - Code block styling
-   - Image placement
-   - Any template-specific conventions
-
-4. **Publish when ready:**
-   ```bash
-   kuaifa publish article.md --title "标题" --cover cover.jpg --template <template-id>
-   ```
+**No template prompt needed** — using default or no template.
 
 ## Core Commands
 
@@ -264,24 +257,23 @@ kuaifa template prompt kuaifa    # Get prompt for "kuaifa" template
 kuaifa template prompt mint      # Get prompt for "mint" template
 ```
 
-**When to use this:**
+**IMPORTANT RULE: Fetch template prompt when GENERATING NEW content**
 
-1. **User is generating NEW content with AI** and wants to use a specific template:
-   - First, get the template's prompt: `kuaifa template prompt <template-id>`
-   - Use the returned prompt to guide your article writing
-   - Write the article following the template's style guidelines
-   - Then publish with `--template <template-id>`
+**When to use:**
+- User asks you to **WRITE/GENERATE** a new article with a specific template
+- User is **CREATING** content that will be published with a template
 
-2. **User has an EXISTING article**:
-   - Skip this step, just publish directly with `--template <template-id>`
+**When NOT to use:**
+- User has an **EXISTING/FINISHED** article file
+- User just wants to **PUBLISH** an already-written article
 
-3. **User is writing + wants to publish with a specific template**:
-   - Ask if they want style guidance
-   - If yes, fetch and show the template prompt first
-   - Help them write/adjust content following the guidelines
-   - Then publish with the template
+**Why?** The template prompt contains writing guidelines:
+- Content structure and formatting
+- Tone and style conventions
+- Special markup or layout rules
+- Best practices for that template
 
-**Important:** The template prompt is for content creation/formatting guidance ONLY. Do not use it if the article is already finalized.
+These guidelines help you write articles that work perfectly with the template's design.
 
 ## Configuration
 
