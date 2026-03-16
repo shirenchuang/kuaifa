@@ -20,32 +20,39 @@ Claude 可以帮助你：
 
 ### 前提条件
 
-1. **安装 Claude Code CLI**（如果还没有安装）：
-   ```bash
-   npm install -g @anthropic-ai/claude-code-cli
-   ```
-
-2. **安装 kuaifa CLI 工具**：
-   ```bash
-   npm install -g kuaifa
-   ```
+- **Node.js >= 18**
+- **kuaifa CLI 工具**：
+  ```bash
+  npm install -g kuaifa
+  ```
+- **Claude Code**（或其他支持 Skill 的 AI 编程助手）
 
 ### 安装本技能
 
-**方法 1：从 GitHub 克隆**
+**方法 1（最简单）：让 AI 帮你安装**
+
+把下面这段话直接发给你的 Claude Code / 小龙虾 / 其他 AI 编程助手：
+
+> 帮我安装这个 skill：https://github.com/shirenchuang/kuaifa/tree/main/skills/kuaifa
+
+AI 会自动帮你克隆仓库并放到正确的位置。
+
+**方法 2：手动克隆**
 ```bash
 cd ~/.claude/skills/
 git clone https://github.com/shirenchuang/kuaifa.git
 ```
 
-**方法 2：手动下载**
+技能文件位于仓库的 `skills/kuaifa/` 目录下，Claude Code 会自动识别。
+
+**方法 3：手动下载**
 1. 下载此仓库
 2. 将 `skills/kuaifa` 目录复制到 `~/.claude/skills/kuaifa`
 
 **验证安装**
 ```bash
-ls ~/.claude/skills/kuaifa
-# 应该看到: README.md  SKILL.md  skill.js  evals/
+ls ~/.claude/skills/kuaifa/SKILL.md
+# 文件存在即安装成功
 ```
 
 ## 🚀 快速开始

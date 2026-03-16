@@ -19,28 +19,40 @@ With this skill, Claude can help you publish articles, manage templates, configu
 ### Prerequisites
 
 - Node.js >= 18
-- Claude Code CLI
+- kuaifa CLI: `npm install -g kuaifa`
 - A kuaifa account (register at https://www.kuaifa.art)
-
-### Install the kuaifa CLI
-
-```bash
-npm install -g kuaifa
-```
+- Claude Code (or any AI coding assistant that supports Skills)
 
 ### Install this skill
 
-Clone this repository to your Claude Code skills directory:
+**Option 1 (Easiest): Let your AI install it**
+
+Just send the following message to your Claude Code or other AI assistant:
+
+> Install this skill: https://github.com/shirenchuang/kuaifa/tree/main/skills/kuaifa
+
+The AI will clone the repo and place it in the correct directory automatically.
+
+**Option 2: Manual clone**
 
 ```bash
 cd ~/.claude/skills/
 git clone https://github.com/shirenchuang/kuaifa.git
 ```
 
-Or symlink your local development copy:
+The skill files live under `skills/kuaifa/` in the repository. Claude Code will detect them automatically.
+
+**Option 3: Symlink (for development)**
 
 ```bash
 ln -s /path/to/kuaifa ~/.claude/skills/kuaifa
+```
+
+**Verify installation**
+
+```bash
+ls ~/.claude/skills/kuaifa/SKILL.md
+# File exists = installed successfully
 ```
 
 ## Quick Start
