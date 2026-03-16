@@ -79,7 +79,6 @@ Claude will:
 
 - **Template management**: "Show me available kuaifa templates"
 - **Image uploads**: "Upload these images to kuaifa"
-- **Preview rendering**: "Render this Markdown with the doocs-classic theme"
 - **Multi-account**: "Publish this to my second account"
 - **Troubleshooting**: "Why is my kuaifa publish failing?"
 

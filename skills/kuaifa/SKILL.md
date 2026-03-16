@@ -171,24 +171,6 @@ kuaifa upload a.png b.jpg c.gif  # multiple files
 
 Supported formats: PNG, JPEG, GIF, WebP, BMP, SVG. Max 10MB per file.
 
-### Render Preview — `kuaifa render <file>`
-
-Convert Markdown to styled HTML for local preview, without publishing.
-
-```bash
-kuaifa render article.md                  # output article.html
-kuaifa render article.md --open           # render and open in browser
-kuaifa render article.md -o preview.html  # save to specific file
-kuaifa render article.md --theme doocs-classic  # use specific theme
-```
-
-| Parameter | Required | Default | Description |
-|---|---|---|---|
-| `<file>` | Yes | — | Markdown 文件路径 |
-| `--theme <name>` | No | config `default-theme` | 使用指定主题渲染 |
-| `--open` | No | `false` | 渲染后自动在浏览器中打开 |
-| `-o, --output <path>` | No | `<filename>.html` | 输出文件路径 |
-
 ### Template Management
 
 List all available templates and user presets:

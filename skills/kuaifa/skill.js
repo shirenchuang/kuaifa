@@ -118,7 +118,6 @@ export default {
     commands: {
       publish: "kuaifa publish <file> --title <title> --cover <image>",
       upload: "kuaifa upload <path...>",
-      render: "kuaifa render <file>",
       templateList: "kuaifa template list",
       configList: "kuaifa config list",
       configSet: "kuaifa config set <key> <value>",
