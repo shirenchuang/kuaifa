@@ -8,6 +8,7 @@ Kuaifa (快发) is a CLI tool that simplifies publishing Markdown content to WeC
 
 - Automatic image uploading and CDN hosting
 - Draft creation in WeChat backend
+- Image message (newspic) publishing for photo galleries and visual content
 - Multi-account management
 - Image caching and compression
 
@@ -74,10 +75,21 @@ Claude will:
 - Create a draft in your WeChat backend
 - Provide you with the media ID for review
 
+### Publishing Image Messages
+
+For image-focused content like photo galleries or visual notes:
+
+```
+Claude, publish these screenshots as an image note with title "AI News Today"
+```
+
+Claude will use `kuaifa publish-newspic` to create a visual-first post optimized for image display.
+
 ### Other Capabilities
 
 - **Template management**: "Show me available kuaifa templates"
 - **Image uploads**: "Upload these images to kuaifa"
+- **Image messages**: "Publish these photos as a newspic post"
 - **Multi-account**: "Publish this to my second account"
 - **Troubleshooting**: "Why is my kuaifa publish failing?"
 
