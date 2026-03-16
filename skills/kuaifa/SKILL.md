@@ -1,11 +1,11 @@
 ---
 name: kuaifa
-description: "Kuaifa (快发) — publish Markdown articles to WeChat Official Accounts via the kuaifa CLI. Use this skill whenever the user wants to publish an article to WeChat, upload images, preview article rendering, manage kuaifa configuration or templates, or mentions '快发', 'kuaifa', 'publish to WeChat', '发布公众号', '微信发布', '发文章'. Also trigger when the user has a Markdown file and wants to distribute it to WeChat, or asks about WeChat article formatting and themes."
+description: "Kuaifa (快发) — publish Markdown articles to WeChat Official Accounts via the kuaifa CLI. Use this skill whenever the user wants to publish an article to WeChat, upload images, manage kuaifa configuration or templates, or mentions '快发', 'kuaifa', 'publish to WeChat', '发布公众号', '微信发布', '发文章'. Also trigger when the user has a Markdown file and wants to distribute it to WeChat, or asks about WeChat article formatting and themes."
 ---
 
 # Kuaifa — Markdown to WeChat, One Command
 
-Kuaifa (快发) is a CLI tool that publishes Markdown articles to WeChat Official Accounts. It handles image uploading, theme rendering, and draft creation — the user just writes Markdown and runs one command.
+Kuaifa (快发) is a CLI tool that publishes Markdown articles to WeChat Official Accounts. It handles image uploading and draft creation — the user just writes Markdown and runs one command.
 
 Official website: https://www.kuaifa.art
 
@@ -151,7 +151,7 @@ Global option: `--account <name>` — 临时使用指定的 profile 发布，不
 3. Remote images (http/https URLs in Markdown) are automatically downloaded and re-uploaded
 4. Images >5MB are automatically compressed (no manual intervention needed)
 5. Unchanged images are skipped via MD5-based local cache (`.kuaifa-images.json` in the same directory)
-6. Server renders HTML with the chosen theme, uploads images to WeChat CDN, creates the draft
+6. Server uploads images to WeChat CDN and creates the draft
 
 **Always default to `--draft`** unless the user explicitly asks to send immediately. This is the safe option — the user can review in WeChat's backend before publishing.
 
@@ -205,7 +205,6 @@ kuaifa config list
 | `server-url` | API 服务端地址（通常不需要修改） |
 | `default-template` | 默认模板 ID 或预设名称，发布时自动使用 |
 | `default-author` | 默认作者名 |
-| `default-theme` | 默认渲染主题 |
 | `account-name` | 公众号名称（用于文章内展示） |
 
 ### Multi-Account Profiles
@@ -271,7 +270,7 @@ If image uploads fail or cached URLs are stale, delete `.kuaifa-images.json` and
 
 ## Markdown Features
 
-Kuaifa's renderer supports:
+Kuaifa supports:
 
 - Standard Markdown (headings, lists, code blocks, tables, blockquotes, etc.)
 - **Obsidian callouts**: `> [!tip] Title` — supports note, tip, warning, danger, quote types

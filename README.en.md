@@ -7,7 +7,6 @@ A Claude Code skill that enables seamless publishing of Markdown articles to WeC
 Kuaifa (快发) is a CLI tool that simplifies publishing Markdown content to WeChat Official Accounts. It handles:
 
 - Automatic image uploading and CDN hosting
-- Theme-based HTML rendering
 - Draft creation in WeChat backend
 - Multi-account management
 - Image caching and compression
