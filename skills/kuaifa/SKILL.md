@@ -158,11 +158,32 @@ kuaifa publish article.md --title "文章标题" --cover cover.jpg
 
 **No template prompt needed** — using default or no template.
 
+### Workflow 4: Publish Image Message (newspic)
+
+When user wants to publish visual content, image collections, or photo galleries:
+
+**Example scenarios:**
+- "把这些图片发布成一个图文笔记"
+- "发布这几张截图到微信"
+- "创建一个图片合集"
+
+```bash
+kuaifa publish-newspic --title "今日AI资讯" --images img1.jpg img2.jpg img3.jpg --caption "精选内容"
+```
+
+**Important:**
+- Always use `--draft` by default (can review before sending)
+- Require at least `--title` and `--images` parameters
+- Images can be local paths or remote URLs
+- Use this for image-focused content, NOT text articles with embedded images
+
 ## Core Commands
 
 ### Publish an Article — `kuaifa publish <file>`
 
 The main command. Takes a Markdown file and publishes it to WeChat as a draft (default) or sends it immediately.
+
+**Use this for:** Regular articles, blog posts, long-form content with text and images.
 
 **Complete example with all parameters:**
 
@@ -210,6 +231,61 @@ Global option: `--account <name>` — 临时使用指定的 profile 发布，不
 6. Server uploads images to WeChat CDN and creates the draft
 
 **Always default to `--draft`** unless the user explicitly asks to send immediately. This is the safe option — the user can review in WeChat's backend before publishing.
+
+### Publish Image Message (newspic) — `kuaifa publish-newspic`
+
+Publish image-focused content to WeChat as "newspic" type. This format is optimized for visual content like photo collections, image notes, and multi-image posts.
+
+**Use this for:** Image notes, photo galleries, visual content collections, infographic posts where images are the primary content.
+
+**Required parameters:**
+
+| Parameter | Description |
+|---|---|
+| `--title <title>` | **Required** - Title of the image message |
+| `--images <paths...>` | **Required** - One or more image paths or URLs (at least 1 image) |
+
+**Optional parameters:**
+
+| Parameter | Default | Description |
+|---|---|---|
+| `--caption <text>` | `""` | Caption/description text for the images |
+| `--draft` | **default** | Save to draft box (default behavior) |
+| `--send` | — | Send immediately to subscribers (**use with caution**) |
+
+**Examples:**
+
+```bash
+# Single image
+kuaifa publish-newspic --title "Daily AI News" --images photo.jpg
+
+# Multiple images (recommended for image notes)
+kuaifa publish-newspic \
+  --title "今日AI资讯" \
+  --images img1.jpg img2.jpg img3.jpg \
+  --caption "精选内容摘要"
+
+# Remote images (URLs)
+kuaifa publish-newspic \
+  --title "Product Screenshots" \
+  --images https://example.com/img1.jpg https://example.com/img2.jpg
+
+# Send immediately
+kuaifa publish-newspic --title "Breaking News" --images news.jpg --send
+```
+
+**How it works:**
+1. Supports both local file paths and remote URLs (http/https)
+2. Automatically compresses images >5MB
+3. Uses MD5-based caching to avoid re-uploading unchanged images
+4. Downloads remote images and re-uploads to WeChat CDN
+5. Creates a visual-first post format optimized for image display
+
+**When to use newspic vs regular publish:**
+- **Use `publish-newspic`** for: Image collections, visual notes, photo galleries, infographics
+- **Use `publish`** for: Text articles, blog posts, long-form content with embedded images
+
+**Always default to `--draft`** unless user explicitly requests `--send`.
 
 ### Upload Images — `kuaifa upload <path...>`
 
