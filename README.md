@@ -103,6 +103,54 @@ kuaifa/
 └── kuaifa-workspace/      # 评估测试结果（不提交到 Git）
 ```
 
+## 🔄 更新
+
+### 更新 kuaifa CLI 工具
+
+当 kuaifa CLI 有新版本发布时，你可以随时更新：
+
+```bash
+# 检查当前版本
+kuaifa --version
+
+# 检查最新版本
+npm view kuaifa version
+
+# 更新到最新版本
+npm update -g kuaifa
+```
+
+**Claude 会主动提醒你更新**：当你使用这个 skill 时，Claude 会检查你的 kuaifa 版本，如果有新版本可用，会建议你更新。
+
+### 更新本 Skill
+
+当 skill 有新功能或改进时（比如支持 CLI 的新命令），更新方法：
+
+**如果是通过 Git 克隆安装的**：
+```bash
+cd ~/.claude/skills/kuaifa
+git pull origin main
+```
+
+**如果是手动下载的**：
+重新下载最新版本并覆盖到 `~/.claude/skills/kuaifa` 目录。
+
+### 版本检查机制
+
+这个 skill 包含自动版本检查功能：
+
+1. **CLI 版本检查**：Claude 会在首次使用时检查 kuaifa CLI 是否安装和版本情况
+2. **更新提醒**：如果发现有新版本，会主动建议更新
+3. **功能兼容性**：确保 skill 的功能与你安装的 CLI 版本兼容
+
+### 更新通知
+
+关注以下渠道获取更新通知：
+
+- 📢 **GitHub Releases**：https://github.com/shirenchuang/kuaifa/releases
+- ⭐ **Star 本仓库**：第一时间收到更新通知
+- 🐛 **问题反馈**：https://github.com/shirenchuang/kuaifa/issues
+
 ## 🧪 开发与测试
 
 ### 运行评估测试

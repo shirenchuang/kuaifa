@@ -53,7 +53,7 @@ export default {
   // Utility functions (optional)
   utils: {
     /**
-     * Check if kuaifa CLI is installed
+     * Check if kuaifa CLI is installed and get version
      */
     async checkInstallation() {
       try {
@@ -62,6 +62,31 @@ export default {
         return { installed: true, version };
       } catch (error) {
         return { installed: false, version: null };
+      }
+    },
+
+    /**
+     * Check if a newer version of kuaifa CLI is available
+     */
+    async checkForUpdates() {
+      try {
+        const { execSync } = require('child_process');
+        const currentVersion = execSync('kuaifa --version', { encoding: 'utf-8' }).trim();
+        const latestVersion = execSync('npm view kuaifa version', { encoding: 'utf-8' }).trim();
+
+        return {
+          currentVersion,
+          latestVersion,
+          updateAvailable: currentVersion !== latestVersion,
+          updateCommand: 'npm update -g kuaifa'
+        };
+      } catch (error) {
+        return {
+          currentVersion: null,
+          latestVersion: null,
+          updateAvailable: false,
+          error: error.message
+        };
       }
     },
 
@@ -75,6 +100,16 @@ export default {
         win32: "npm install -g kuaifa"
       };
       return instructions[platform] || instructions.darwin;
+    },
+
+    /**
+     * Get update instructions for kuaifa CLI
+     */
+    getUpdateInstructions() {
+      return {
+        cli: "npm update -g kuaifa",
+        skill: "cd ~/.claude/skills/kuaifa && git pull origin main"
+      };
     },
 
     /**

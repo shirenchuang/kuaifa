@@ -93,6 +93,54 @@ This skill teaches Claude how to:
 4. **Manage configuration** — profiles, templates, remote settings
 5. **Troubleshoot issues** — diagnose common errors and suggest fixes
 
+## 🔄 Updates
+
+### Updating kuaifa CLI
+
+Keep your kuaifa CLI up to date to access the latest features and bug fixes:
+
+```bash
+# Check current version
+kuaifa --version
+
+# Check latest version
+npm view kuaifa version
+
+# Update to latest
+npm update -g kuaifa
+```
+
+**Claude will proactively remind you**: When using this skill, Claude checks your kuaifa version and suggests updates when a newer version is available.
+
+### Updating This Skill
+
+When the skill is updated with new features or support for new CLI commands:
+
+**If installed via git clone**:
+```bash
+cd ~/.claude/skills/kuaifa
+git pull origin main
+```
+
+**If manually downloaded**:
+Download the latest version and replace the `~/.claude/skills/kuaifa` directory.
+
+### Version Check Mechanism
+
+This skill includes automatic version checking:
+
+1. **CLI Version Check**: Claude verifies kuaifa CLI installation and version on first use
+2. **Update Reminders**: Proactively suggests updates when newer versions are available
+3. **Feature Compatibility**: Ensures skill features match your installed CLI version
+
+### Update Notifications
+
+Stay informed about updates:
+
+- 📢 **GitHub Releases**: https://github.com/shirenchuang/kuaifa/releases
+- ⭐ **Star this repo**: Get notified of new releases
+- 🐛 **Issue Tracker**: https://github.com/shirenchuang/kuaifa/issues
+
 ## Development
 
 ### Running Evals

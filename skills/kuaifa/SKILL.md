@@ -9,6 +9,32 @@ Kuaifa (快发) is a CLI tool that publishes Markdown articles to WeChat Officia
 
 Official website: https://www.kuaifa.art
 
+## Version Check (IMPORTANT - Check This First!)
+
+**BEFORE starting any kuaifa operation**, always check the CLI version and recommend updates if available:
+
+```bash
+# Check installed version
+kuaifa --version
+
+# Check for updates (optional but recommended)
+npm view kuaifa version
+```
+
+If the user's version is outdated, proactively suggest updating:
+
+```bash
+npm update -g kuaifa
+```
+
+**Why this matters**: New features, bug fixes, and command improvements are frequently released. Always encourage users to stay updated for the best experience.
+
+**For this skill itself**: If users report issues or mention missing features, remind them to update the skill:
+
+```bash
+cd ~/.claude/skills/kuaifa && git pull origin main
+```
+
 ## First-Time Setup Guide
 
 Before any operation, check if kuaifa is installed:
