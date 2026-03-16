@@ -1,0 +1,29 @@
+{
+  "skill_name": "kuaifa",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "我想用 kuaifa 发公众号文章，从来没用过，怎么开始？",
+      "expected_output": "Should guide through complete setup: npm install, register at kuaifa.art for API key, set appid/appsecret, set default-author, show template list and recommend setting default-template",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "帮我看看有哪些模板可以用，我想换一个好看的模板发布文章",
+      "expected_output": "Should run kuaifa template list, explain system templates vs user presets, show how to use --template flag or set default-template",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "帮我把 article.md 发到微信草稿箱，封面用 cover.jpg，标题叫 'AI 周报'",
+      "expected_output": "Should construct correct publish command: kuaifa publish article.md --title 'AI 周报' --cover cover.jpg --draft",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "我有两个公众号，想把同一篇文章分别发到两个号上",
+      "expected_output": "Should explain multi-account profiles: profile add, profile use, profile set, or use --account flag to publish to different accounts",
+      "files": []
+    }
+  ]
+}
