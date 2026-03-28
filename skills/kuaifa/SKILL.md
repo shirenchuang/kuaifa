@@ -1,6 +1,6 @@
 ---
 name: kuaifa
-description: "Kuaifa (快发) — publish Markdown articles to WeChat Official Accounts via the kuaifa CLI. Use this skill whenever the user wants to publish an article to WeChat, upload images, manage kuaifa configuration or templates, or mentions '快发', 'kuaifa', 'publish to WeChat', '发布公众号', '微信发布', '发文章'. Also trigger when the user has a Markdown file and wants to distribute it to WeChat, or asks about WeChat article formatting and themes."
+description: "Kuaifa (快发) — publish Markdown articles to WeChat Official Accounts via the kuaifa CLI. Use this skill whenever the user wants to publish an article to WeChat, publish image messages, manage kuaifa configuration or templates, or mentions '快发', 'kuaifa', 'publish to WeChat', '发布公众号', '微信发布', '发文章'. Also trigger when the user has a Markdown file and wants to distribute it to WeChat, or asks about WeChat article formatting and themes."
 ---
 
 # Kuaifa — Markdown to WeChat, One Command
@@ -9,27 +9,27 @@ Kuaifa (快发) is a CLI tool that publishes Markdown articles to WeChat Officia
 
 Official website: https://www.kuaifa.art
 
-## Version Check (IMPORTANT - Check This First!)
+## Version Check
 
-**BEFORE starting any kuaifa operation**, always check the CLI version and recommend updates if available:
+On **first use in a session** (not every operation), check the CLI version:
 
 ```bash
-# Check installed version
 kuaifa --version
+```
 
-# Check for updates (optional but recommended)
+If you haven't checked before, also compare with the latest published version:
+
+```bash
 npm view kuaifa version
 ```
 
-If the user's version is outdated, proactively suggest updating:
+If an update is available, mention it once:
 
 ```bash
 npm update -g kuaifa
 ```
 
-**Why this matters**: New features, bug fixes, and command improvements are frequently released. Always encourage users to stay updated for the best experience.
-
-**For this skill itself**: If users report issues or mention missing features, remind them to update the skill:
+If users report issues or mention missing features, also remind them to update the skill:
 
 ```bash
 cd ~/.claude/skills/kuaifa && git pull origin main
@@ -264,7 +264,7 @@ kuaifa publish article.md --title "文章标题" --cover cover.jpg
 | `--draft` | No | **default** | 发布到草稿箱（默认行为） |
 | `--send` | No | — | 直接群发给订阅者（**谨慎使用，发送后无法撤回**） |
 
-Global option: `--account <name>` — 临时使用指定的 profile 发布，不修改当前激活配置。
+Global option: `--account <name>` — 放在 `kuaifa` 之后、子命令之前，临时使用指定的 profile，不修改当前激活配置。例如：`kuaifa --account my-work publish article.md ...`
 
 **What happens under the hood:**
 1. Scans the Markdown for image references (standard `![](path)` and Obsidian `![[image.png]]`)
@@ -330,22 +330,6 @@ kuaifa publish-newspic --title "Breaking News" --images news.jpg --send
 - **Use `publish`** for: Text articles, blog posts, long-form content with embedded images
 
 **Always default to `--draft`** unless user explicitly requests `--send`.
-
-### Upload Images — `kuaifa upload <path...>`
-
-Upload images to cloud storage and get CDN URLs.
-
-```bash
-kuaifa upload photo.png          # single file
-kuaifa upload images/            # entire directory
-kuaifa upload a.png b.jpg c.gif  # multiple files
-```
-
-| Parameter | Description |
-|---|---|
-| `<path...>` | 一个或多个文件/目录路径。目录会上传其中所有图片 |
-
-Supported formats: PNG, JPEG, GIF, WebP, BMP, SVG. Max 10MB per file.
 
 ### Template Management
 
@@ -431,10 +415,10 @@ kuaifa config profile list
 kuaifa config profile use none                 # switch back to global
 ```
 
-Use `--account <name>` on any command to temporarily use a different profile:
+Use `--account <name>` (placed after `kuaifa`, before the subcommand) to temporarily use a different profile:
 
 ```bash
-kuaifa publish article.md --title "标题" --cover cover.jpg --account my-second-account
+kuaifa --account my-second-account publish article.md --title "标题" --cover cover.jpg
 ```
 
 ### Remote Server Settings
@@ -497,7 +481,6 @@ Kuaifa supports:
 | `错误：缺少封面图` | Add `--cover <image>` to publish command |
 | `错误：缺少文章标题` | Add `--title "标题"` to publish command |
 | `微信凭证验证失败` | Check appid/appsecret on mp.weixin.qq.com |
-| `图片上传失败` | Check file size (<10MB), supported formats (PNG/JPG/GIF/WebP/BMP/SVG) |
 | Image cache stale | Delete `.kuaifa-images.json` next to the Markdown file and retry |
 
 For more help, visit https://www.kuaifa.art.

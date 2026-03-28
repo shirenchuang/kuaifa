@@ -11,7 +11,7 @@ export default {
   // Skill metadata
   name: "kuaifa",
   version: "1.2.0",
-  description: "Kuaifa (快发) — publish Markdown articles to WeChat Official Accounts via the kuaifa CLI. Use this skill whenever the user wants to publish an article to WeChat, upload images, manage kuaifa configuration or templates, or mentions '快发', 'kuaifa', 'publish to WeChat', '发布公众号', '微信发布', '发文章'. Also trigger when the user has a Markdown file and wants to distribute it to WeChat, or asks about WeChat article formatting and themes.",
+  description: "Kuaifa (快发) — publish Markdown articles to WeChat Official Accounts via the kuaifa CLI. Use this skill whenever the user wants to publish an article to WeChat, publish image messages, manage kuaifa configuration or templates, or mentions '快发', 'kuaifa', 'publish to WeChat', '发布公众号', '微信发布', '发文章'. Also trigger when the user has a Markdown file and wants to distribute it to WeChat, or asks about WeChat article formatting and themes.",
 
   // Trigger keywords - when to activate this skill
   triggers: [
@@ -45,7 +45,7 @@ export default {
         packageManager: "npm",
         package: "kuaifa",
         global: true,
-        requiredVersion: ">=1.0.0"
+        requiredVersion: ">=0.3.0"
       }
     }
   },
@@ -118,7 +118,6 @@ export default {
     commands: {
       publish: "kuaifa publish <file> --title <title> --cover <image>",
       publishNewspic: "kuaifa publish-newspic --title <title> --images <paths...>",
-      upload: "kuaifa upload <path...>",
       templateList: "kuaifa template list",
       templatePrompt: "kuaifa template prompt <template-id>",
       configList: "kuaifa config list",
@@ -153,10 +152,6 @@ export default {
         problem: "WeChat credentials invalid",
         solution: "Check appid/appsecret on mp.weixin.qq.com"
       },
-      "图片上传失败": {
-        problem: "Image upload failed",
-        solution: "Check file size (<10MB) and format (PNG/JPG/GIF/WebP/BMP/SVG)"
-      }
     }
   },
 
