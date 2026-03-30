@@ -12,7 +12,7 @@ kuaifa config list
 
 | Key | Description |
 |---|---|
-| `api-key` | kuaifa API 密钥（在 www.kuaifa.art 注册获取） |
+| `api-key` | kuaifa API 密钥（在 www.kuaifa.art 或 api.kuaifa.art 注册获取） |
 | `appid` | 微信公众号 AppID |
 | `appsecret` | 微信公众号 AppSecret |
 | `server-url` | API 服务端地址（通常不需要修改） |

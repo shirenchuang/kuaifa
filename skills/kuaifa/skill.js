@@ -138,7 +138,7 @@ export default {
       },
       "未设置 api-key": {
         problem: "API key not configured",
-        solution: "Register at https://www.kuaifa.art and run: kuaifa config set api-key <key>"
+        solution: "Register at https://www.kuaifa.art（或备用 https://api.kuaifa.art）and run: kuaifa config set api-key <key>"
       },
       "缺少封面图": {
         problem: "Missing cover image",

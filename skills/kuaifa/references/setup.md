@@ -22,7 +22,7 @@ If unconfigured, walk the user through the complete setup:
 
 ## Step 1: Get an API Key
 
-Register at https://www.kuaifa.art to get your API key, then:
+Register at https://www.kuaifa.art（或备用地址 https://api.kuaifa.art）to get your API key, then:
 
 ```bash
 kuaifa config set api-key <YOUR_API_KEY>

@@ -7,7 +7,7 @@ description: "Kuaifa (快发) — publish Markdown articles to WeChat Official A
 
 Kuaifa (快发) is a CLI tool that publishes Markdown articles to WeChat Official Accounts. It handles image uploading and draft creation — the user just writes Markdown and runs one command.
 
-Official website: https://www.kuaifa.art
+Official website: https://www.kuaifa.art（备案中可访问 https://api.kuaifa.art）
 
 ## Version Check
 
